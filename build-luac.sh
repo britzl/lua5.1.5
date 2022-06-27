@@ -6,8 +6,16 @@ echo "Building for platform ${PLATFORM}"
 
 make clean
 make ${PLATFORM} LUAC_STR_SIZE_TYPE=int
-mv src/luac luac-32
+if [ "$PLATFORM" = "windows" ]; then
+	mv src/luac.exe luac-32.exe
+else
+	mv src/luac luac-32
+fi
 
 make clean
 make ${PLATFORM} LUAC_STR_SIZE_TYPE=size_t
-mv src/luac luac-64
+if [ "$PLATFORM" = "windows" ]; then
+	mv src/luac.exe luac-64.exe
+else
+	mv src/luac luac-64
+fi
