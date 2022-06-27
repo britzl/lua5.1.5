@@ -27,7 +27,8 @@ jobs:
       steps:
         - uses: actions/checkout@v2
         - name: Build luac tool for MinGW
-          run: ./build-luac.sh mingw 32
+          run: ./build-luac.sh mingw
+          shell: bash
            
         - name: Archive results
           uses: actions/upload-artifact@v3
@@ -42,7 +43,7 @@ jobs:
       steps:
         - uses: actions/checkout@v2
         - name: Build luac tool for macos
-          run: ./build-luac.sh macosx 32
+          run: ./build-luac.sh macosx
               
         - name: Archive results
           uses: actions/upload-artifact@v3
