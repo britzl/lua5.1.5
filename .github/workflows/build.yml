@@ -42,7 +42,7 @@ jobs:
       steps:
         - uses: actions/checkout@v2
         - name: Build luac tool for macos
-           run: ./build-luac.sh macosx 32
+          run: ./build-luac.sh macosx 32
               
         - name: Archive results
           uses: actions/upload-artifact@v3
