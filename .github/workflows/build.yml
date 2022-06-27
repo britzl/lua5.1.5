@@ -11,7 +11,8 @@ jobs:
       steps:
         - uses: actions/checkout@v2
         - name: Build luac tool for Linux
-          run: ./build-luac.sh linux
+          run: |
+            ./build-luac.sh linux
         
         - name: Archive results
           uses: actions/upload-artifact@v3
