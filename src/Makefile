@@ -96,10 +96,10 @@ generic:
 	$(MAKE) all MYCFLAGS=
 
 linux:
-	$(MAKE) all MYCFLAGS=-DLUA_USE_LINUX MYLIBS="-Wl,-E -ldl -lreadline -lhistory -lncurses"
+	$(MAKE) all MYCFLAGS="-DLUA_USE_LINUX  -DLUAC_STR_SIZE_TYPE=$(LUAC_STR_SIZE_TYPE)" MYLIBS="-Wl,-E -ldl -lreadline -lhistory -lncurses"
 
 macosx:
-	$(MAKE) all MYCFLAGS=-DLUA_USE_LINUX MYLIBS="-lreadline"
+	$(MAKE) all MYCFLAGS="-DLUA_USE_LINUX -DLUAC_STR_SIZE_TYPE=$(LUAC_STR_SIZE_TYPE)" MYLIBS="-lreadline"
 # use this on Mac OS X 10.3-
 #	$(MAKE) all MYCFLAGS=-DLUA_USE_MACOSX
 
@@ -107,7 +107,8 @@ mingw:
 	$(MAKE) "LUA_A=lua51.dll" "LUA_T=lua.exe" \
 	"AR=$(CC) -shared -o" "RANLIB=strip --strip-unneeded" \
 	"MYCFLAGS=-DLUA_BUILD_AS_DLL" "MYLIBS=" "MYLDFLAGS=-s" lua.exe
-	$(MAKE) "LUAC_T=luac.exe" luac.exe
+	$(MAKE) "LUAC_T=luac.exe" \
+	"MYCFLAGS=-DLUAC_STR_SIZE_TYPE=$(LUAC_STR_SIZE_TYPE)" luac.exe
 
 posix:
 	$(MAKE) all MYCFLAGS=-DLUA_USE_POSIX
