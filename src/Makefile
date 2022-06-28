@@ -106,7 +106,7 @@ macosx:
 mingw:
 	$(MAKE) "LUA_A=lua51.dll" "LUA_T=lua.exe" \
 	"AR=$(CC) -shared -o" "RANLIB=strip --strip-unneeded" \
-	"MYCFLAGS=-DLUA_BUILD_AS_DLL" "MYLIBS=" "MYLDFLAGS=-s" lua.exe
+	"MYCFLAGS=-DLUA_BUILD_AS_DLL -DLUAC_STR_SIZE_TYPE=$(LUAC_STR_SIZE_TYPE)" "MYLIBS=" "MYLDFLAGS=-s" lua.exe
 	$(MAKE) "LUAC_T=luac.exe" \
 	"MYCFLAGS=-DLUAC_STR_SIZE_TYPE=$(LUAC_STR_SIZE_TYPE)" luac.exe
 
